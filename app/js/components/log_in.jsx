@@ -1,16 +1,19 @@
 'use strict';
 
-var React           = require('react'  );
-var Fluxxor         = require('fluxxor');
+var React   = require('react'                  );
+var Fluxxor = require('fluxxor'                );
+var auth    = require('./js/stores/user_stores');
 
 var FluxMixin       = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
 var Login = React.createClass({
-  mixins: [FluxMixin],
+  mixins: [FluxMixin, Navigation],
+
   getInitialState: function() {
     return {user: {username: '', password: ''}};
   },
+
   handleChange: function(event) {
     var stateCopy = this.state;
     stateCopy.changed = true;
@@ -21,11 +24,29 @@ var Login = React.createClass({
 
     this.setState(stateCopy);
   },
+
   handleSubmit: function(event) {
     event.preventDefault();
 
+    var email = findDOMNode(this.refs.email).value;
+    var pass = findDOMNode(this.refs.pass).value;
+
+    auth.onLogin(email, pass, function(loggedIn){
+      if(!loggedIn)
+        return this.setState({error: true});
+
+      var {location} = this.props;
+
+      if(location.state && location.state.nextPathname){
+        this.replaceWith(location.state.nextPathname);
+      } else {
+        this.replaceWith('/dashboard');
+      }
+    });
+
     this.getFlux().actions.login(this.state.user);
   },
+
   render: function() {
     var usernameError;
     var passwordError;

@@ -7,7 +7,8 @@ var log_in      = require('./js/components/log_in.jsx'     );
 var Users       = require('./js/components/users.jsx'      );
 var constants   = require('./js/constants/login_constants' );
 var UserStore   = require('./js/stores/user_stores'        );
-var Router, { DefaultRoute, Link, Route, RouteHandler } from 'react-router';
+var auth        = require('./js/stores/user_stores'        );
+var Router { DefaultRoute, Link, Route, RouteHandler } from 'react-router';
 
 require("./css/chatapp.css");
 
@@ -32,7 +33,6 @@ var stores = {
 };
 
 var flux = new Fluxxor.Flux(stores, actions);
-
 var FluxMixin = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
@@ -40,12 +40,25 @@ var App = React.createClass({
 
   mixins: [FluxMixin, StoreWatchMixin('UserStore')],
 
+  getInitialState: function() {
+    return {
+      loggedIn: auth.loggedIn();
+    }
+  }
+
+  setStateOnAuth: function(loggedIn) {
+    this.setState({
+      loggedIn: loggedIn;
+    });
+  },
+
   getStateFromFlux: function() {
     var flux = this.getFlux();
     return {
       userData: flux.store('UserStore').getState()
     };
   },
+
   render: function() {
     return (
       <main>
