@@ -1,11 +1,12 @@
 'use strict';
 
-var React   = require('react'                  );
-var Fluxxor = require('fluxxor'                );
-var auth    = require('./js/stores/user_stores');
+var React   = require('react'                );
+var Fluxxor = require('fluxxor'              );
+var auth    = require('../stores/user_stores');
 
 var FluxMixin       = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
+import { Router, Route, Link, Navigation } from 'react-router';
 
 var Login = React.createClass({
   mixins: [FluxMixin, Navigation],
