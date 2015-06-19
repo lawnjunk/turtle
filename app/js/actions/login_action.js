@@ -1,10 +1,12 @@
-var TurtleDispatcher          = require('../dispatcher/TurtleDispatcher.js');
-var {LOGIN_USER, LOGOUT_USER} = require('../constants/login_constants'     );
-var RouterContainer           = require('../services/router_container.js'  );
-var eat                       = require('eat'                              );
+var TurtleDispatcher          = require('../dispatcher/ChatAppDispatcher');
+var {LOGIN_USER, LOGOUT_USER} = require('../constants/login_constants'   );
+var RouterContainer           = require('../services/router_container'   );
+var eat                       = require('eat'                            );
 
 export default {
+
   loginUser: function(eat) {
+
     var savedEat = localStorage.getItem('eat');
     console.log('user logged in');
 
@@ -12,6 +14,9 @@ export default {
       console.log('eat token good, redirect to /dashboard');
       var nextPath = '/dashboard';
 
+      // console.log(eat);
+      // console.log(RouterContainer.get());
+      // console.log(transitionTo(nextPath));
       RouterContainer.get().transitionTo(nextPath);
       localStorage.setItem('eat', eat);
     }

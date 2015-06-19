@@ -1,8 +1,8 @@
 'use strict';
 
-var React   = require('react'                );
-var Fluxxor = require('fluxxor'              );
-var auth    = require('../stores/user_stores');
+var React   = require('react'                  );
+var Fluxxor = require('fluxxor'                );
+var auth    = require('../actions/login_action.js');
 
 var FluxMixin       = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
@@ -29,21 +29,7 @@ var Login = React.createClass({
   handleSubmit: function(event) {
     event.preventDefault();
 
-    var email = findDOMNode(this.refs.email).value;
-    var pass = findDOMNode(this.refs.pass).value;
-
-    auth.onLogin(email, pass, function(loggedIn){
-      if(!loggedIn)
-        return this.setState({error: true});
-
-      var {location} = this.props;
-
-      if(location.state && location.state.nextPathname){
-        this.replaceWith(location.state.nextPathname);
-      } else {
-        this.replaceWith('/dashboard');
-      }
-    });
+    auth.loginUser();
 
     this.getFlux().actions.login(this.state.user);
   },
