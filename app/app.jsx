@@ -8,7 +8,8 @@ var Users       = require('./js/components/users.jsx'      );
 var constants   = require('./js/constants/login_constants' );
 var UserStore   = require('./js/stores/user_stores'        );
 var auth        = require('./js/stores/user_stores'        );
-import Router, {DefaultRoute, Link, Route, RouteHandler } from 'react-router';
+var Cookies     = require('cookies-js'                     );
+import Router, { DefaultRoute, Link, Route, RouteHandler } from 'react-router';
 
 
 require("./css/chatapp.css");
