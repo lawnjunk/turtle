@@ -9,20 +9,12 @@ var constants   = require('./js/constants/login_constants' );
 var UserStore   = require('./js/stores/user_stores'        );
 var auth        = require('./js/stores/user_stores'        );
 var Cookies     = require('cookies-js'                     );
-
-import Router, { DefaultRoute, Link, Route, RouteHandler } from 'react-router';
-import React from 'react/addons';
-import dashboard from './js/components/dashboard.jsx';
-import create_user from './js/components/create_user.jsx';
-import log_in from './js/components/log_in.jsx';
 import Router, { DefaultRoute, Link, Route, RouteHandler } from 'react-router';
 
 require("./css/chatapp.css");
 
 window.React = React;
 
-var request = require('superagent');
-var constants = require('./js/constants/login_constants');
 var Fluxxor = require('fluxxor');
 var UserStore = require('./js/stores/user_stores');
 var Users = require('./js/components/users.jsx');

@@ -4,13 +4,13 @@ var Navbar          = require('./nav_bar.jsx'           );
 var ThreadSection   = require('./ThreadSection.jsx'     );
 var ChatExampleData = require('./ChatExampleData'       );
 var ChatWebAPIUtils = require('../utils/ChatWebAPIUtils');
-var Cookies = require('cookies-js');
+var Cookies         = require('cookies-js'              );
 
 
 ChatExampleData.init();
 ChatWebAPIUtils.getAllMessages();
 
-export default class Dashboard extends React.Component {
+var Dashboard = React.createClass ({
   render() {
     var dashboardSection;
     if (Cookies.get('eat')) {
@@ -25,4 +25,6 @@ export default class Dashboard extends React.Component {
       </div>
     );
   }
-};
+});
+
+module.exports = Dashboard;
