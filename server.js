@@ -30,7 +30,7 @@ mongoose.connect(process.env.MONGOLAB_URI);
 
 // init passport strat
 app.use(passport.initialize());
-require('./lib/passport_strategy.js')(passport);;
+require('./lib/passport_strategy.js')(passport);
 app.use(cors());
 
 // routers
@@ -66,9 +66,9 @@ io.on('connection', function(socket){
 		if (err) {
 			console.log('socket fucked up ', socket.id);
 			return socket.emit('login', {success: false, msg: 'fuck'});
-		};
+		}
 		console.log(user);
-		connectedUses[user.username] = {socket_id: socket.id}
+		connectedUses[user.username] = {socket_id: socket.id};
 		console.log(connectedUses);
 
 		socket.emit('login', {username: user.username, msg: 'login success', success: 'true'});
