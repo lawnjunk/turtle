@@ -13,7 +13,6 @@ export default {
 
     if(savedEat !== eat) {
       console.log('eat token good, redirect to /dashboard');
-      var nextPath = '/dashboard';
 
       console.log(eat);
 
