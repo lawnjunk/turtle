@@ -47,7 +47,7 @@ var UserStore = Fluxxor.createStore({
   },
 
   loggedIn: function() {
-    return !!localStorage.token;
+    return !!localStorage.eat;
   },
 
   onLogout: function() {

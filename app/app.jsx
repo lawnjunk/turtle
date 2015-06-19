@@ -16,7 +16,7 @@ require("./css/chatapp.css");
 window.React = React;
 
 var actions = {
-  login: function(user) {
+  login: function(user, transitionTo) {
     this.dispatch(constants.LOGIN, user);
   },
 
@@ -63,7 +63,6 @@ var App = React.createClass({
 var routes = (
   <Route handler={App}>
     <Route path="/dashboard" handler={dashboard}/>
-    <Route path="/login">
   </Route>
 );
 

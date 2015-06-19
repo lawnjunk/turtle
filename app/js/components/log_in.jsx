@@ -2,7 +2,7 @@
 
 var React   = require('react'                  );
 var Fluxxor = require('fluxxor'                );
-var auth    = require('../actions/login_action.js');
+var auth    = require('../actions/login_action');
 
 var FluxMixin       = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
@@ -29,7 +29,7 @@ var Login = React.createClass({
   handleSubmit: function(event) {
     event.preventDefault();
 
-    auth.loginUser();
+    auth.loginUser(event);
 
     this.getFlux().actions.login(this.state.user);
   },

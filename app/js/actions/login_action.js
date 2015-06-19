@@ -1,7 +1,8 @@
 var TurtleDispatcher          = require('../dispatcher/ChatAppDispatcher');
 var {LOGIN_USER, LOGOUT_USER} = require('../constants/login_constants'   );
-var RouterContainer           = require('../services/router_container'   );
+// var RouterContainer           = require('../services/router_container'   );
 var eat                       = require('eat'                            );
+import Router, {DefaultRoute, Router, Link, Route, RouteHandler, Navigation } from 'react-router';
 
 export default {
 
@@ -14,10 +15,12 @@ export default {
       console.log('eat token good, redirect to /dashboard');
       var nextPath = '/dashboard';
 
-      // console.log(eat);
-      // console.log(RouterContainer.get());
-      // console.log(transitionTo(nextPath));
-      RouterContainer.get().transitionTo(nextPath);
+      console.log(eat);
+
+      function direct (nextState, transition) {
+        transition.to('/dashboard', null, {nextPathname: nextState.location.pathname});
+      }
+
       localStorage.setItem('eat', eat);
     }
 
@@ -28,7 +31,7 @@ export default {
   },
 
   logoutUser: function(eat) {
-    RouterContainer.get().transitionTo('/#/log_in');
+    RouterContainer.get().transition.to('/#/log_in');
     localStorage.removeItem('eat');
     TurtleDispatcher.dispatch({
       actionType: LOGOUT_USER
