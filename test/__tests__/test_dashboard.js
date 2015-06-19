@@ -1,5 +1,3 @@
-// Test dashboard with Jest
-
 // Tell Jest to run tests on actual file, not a "copy"
 
 jest.dontMock('../../app/js/components/dashboard.jsx');

@@ -7,7 +7,7 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "jest"
+    "test": "./node_modules/jest-cli/bin/jest.js"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
   "homepage": "https://github.com/dwolfm/turtle",
   "jest": {
     "scriptPreprocessor": "<rootDir>/preprocessor.js",
-    "rootDir": "app",
+    "rootDir": "./",
     "testPathIgnorePatterns": [
       "/node_modules/",
       "<rootDir>/node_modules/"
