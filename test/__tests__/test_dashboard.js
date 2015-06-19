@@ -10,9 +10,9 @@ var TestUtils = React.addons.TestUtils;
 
 describe('dashboard', function() {
   it('should be composed of msgs and the msg thread', function() {
-    var messages = <MessageSection />
+    var messages = <MessageSection messages="3"/>;
     var DOM = TestUtils.renderIntoDocument(messages);
 
-    expect(DOM.)
+    expect(DOM.refs.header.getDOMNode().texContent).toEqual("3");
   });
 });

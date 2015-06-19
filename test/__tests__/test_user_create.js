@@ -4,4 +4,3 @@
 jest.dontMock('../../app/js/components/create_user.jsx');
 
 var React = require('react/addons');
-var
