@@ -1,8 +1,9 @@
 'use strict';
 
-var React = require('react');
-var Fluxxor = require('fluxxor')
-var FluxMixin = Fluxxor.FluxMixin(React);
+var React           = require('react'  );
+var Fluxxor         = require('fluxxor');
+
+var FluxMixin       = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
 var Login = React.createClass({
@@ -23,7 +24,6 @@ var Login = React.createClass({
   handleSubmit: function(event) {
     event.preventDefault();
 
-    console.log(this.state.user);
     this.getFlux().actions.login(this.state.user);
   },
   render: function() {
@@ -35,19 +35,22 @@ var Login = React.createClass({
     if (this.state.user.password.length < 1 && this.state.changed)
       passwordError = <span>password cannot be blank</span>;
     if (usernameError || passwordError && !this.state.changed)
-      submitButton = <button type="submit" disabled>Log In to Exising User</button>;
+      submitButton = <button type="submit" disabled>Log In</button>;
     else
-      submitButton = <button type="submit" >Log In to Exising User</button>;
+      submitButton = <button type="submit" >Log In</button>;
 
     return (
-      <form name="signinform" onSubmit={this.handleSubmit}>
-        <label htmlFor="username">User Name:</label>{usernameError}<br/>
-        <input type="text" name="user-username" id="username" value={this.state.user.username} onChange={this.handleChange} />
-        <br/>
-        <label htmlFor="password">Password:</label>{passwordError}<br/>
-        <input type="password" name="user-password" id="password" value={this.state.user.password} onChange={this.handleChange} /><br/>
-        {submitButton}
-      </form>
+      <section  className="sign-in">
+        <form name="signinform" onSubmit={this.handleSubmit}>
+          <ul>
+            <li><label htmlFor="username">User Name:</label>{usernameError}</li>
+            <li><input type="text" name="user-username" id="username" value={this.state.user.username} onChange={this.handleChange} /></li>
+            <li><label htmlFor="password">Password:</label>{passwordError}</li>
+            <li><input type="password" name="user-password" id="password" value={this.state.user.password} onChange={this.handleChange} /></li>
+            <li>{submitButton}</li>
+          </ul>
+        </form>
+      </section>
     )
   }
 });

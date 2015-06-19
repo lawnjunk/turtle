@@ -1,11 +1,12 @@
 'use strict';
 
-var React = require('react');
-var Fluxxor = require('fluxxor');
+var React      = require('react'            );
+var Fluxxor    = require('fluxxor'          );
+var CreateUser = require('./create_user.jsx');
+var Login      = require('./log_in.jsx'     );
+
 var FluxMixin = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
-var CreateUser = require('./create_user.jsx');
-var Login = require('./log_in.jsx');
 
 var UsersForm = React.createClass({
   mixins: [FluxMixin],
@@ -26,7 +27,6 @@ var UsersForm = React.createClass({
 
     if (!this.state.existingUser) {
       linkText = 'Create New User'
-      h1Text = 'Logging In!'
       userForm = <Login />
     } else {
       linkText = 'Log in to Exisiting User'
@@ -35,9 +35,10 @@ var UsersForm = React.createClass({
     }
 
     return (
-      <div>
-        <h1>{h1Text}</h1>
-        <a href onClick={this.toggleExisting}>{linkText}</a>
+      <div className="create-or-login-button">
+        <a href onClick={this.toggleExisting}>
+        <button>{linkText}</button>
+        </a>
         {userForm}
       </div>
     )

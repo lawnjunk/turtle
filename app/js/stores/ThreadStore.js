@@ -2,6 +2,7 @@ import ChatAppDispatcher from '../dispatcher/ChatAppDispatcher';
 import ChatConstants from '../constants/ChatConstants';
 import ChatMessageUtils from '../utils/ChatMessageUtils';
 var ActionTypes = ChatConstants.ActionTypes;
+var Cookies = require('cookies-js');
 
 var assign = require('object-assign');
 var EventEmitter = require('events').EventEmitter;
@@ -14,8 +15,6 @@ var _threads = {};
 var ThreadStore = assign({}, EventEmitter.prototype, {
 
   init: function(rawMessages) {
-    console.log('ThreadStore: Init()');
-    console.log(rawMessages);
     rawMessages.forEach(function(message) {
       var threadID = message.threadID;
       var thread = _threads[threadID];
@@ -25,6 +24,7 @@ var ThreadStore = assign({}, EventEmitter.prototype, {
       _threads[threadID] = {
         id: threadID,
         name: message.threadName,
+        users: [message.user, message.threadName],
         lastMessage: ChatMessageUtils.convertRawMessage(message, _currentID)
       };
     }, this);
@@ -34,7 +34,7 @@ var ThreadStore = assign({}, EventEmitter.prototype, {
       _currentID = allChrono[allChrono.length - 1].id;
     }
 
-    console.log(_currentID);
+    // console.log(_currentID);
     _threads[_currentID].lastMessage.isRead = true;
   },
 
@@ -84,6 +84,16 @@ var ThreadStore = assign({}, EventEmitter.prototype, {
     return orderedThreads;
   },
 
+  getAllForUser: function() {
+    var orderedThreads = [];
+    var currentUser = Cookies.get('username');
+    for (var id in _threads) {
+      var thread = _threads[id]
+      console.log(thread);
+      orderedThreads.push(thread);
+    }
+  },
+
   getCurrentID: function() {
     return _currentID;
   },
@@ -105,13 +115,15 @@ ThreadStore.dispatchToken = ChatAppDispatcher.register(function(action) {
       break;
 
     case ActionTypes.RECEIVE_RAW_MESSAGES:
-      console.log('ThreadStore: RECEIVE_RAW_MESSAGES');
       ThreadStore.init(action.rawMessages);
       ThreadStore.emitChange();
       break;
 
     case ActionTypes.CREATE_THREAD:
       ThreadStore.emitChange();
+      break;
+
+    case ActionTypes.RECEIVE_FRIENDS:
       break;
 
     default:

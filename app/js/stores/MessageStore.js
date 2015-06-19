@@ -4,6 +4,7 @@ var ChatMessageUtils = require('../utils/ChatMessageUtils');
 var EventEmitter = require('events').EventEmitter;
 var ThreadStore = require('../stores/ThreadStore');
 var assign = require('object-assign');
+var Cookies = require('cookies-js');
 
 var ActionTypes = ChatConstants.ActionTypes;
 var CHANGE_EVENT = 'change';
@@ -95,7 +96,9 @@ MessageStore.dispatchToken = ChatAppDispatcher.register(function(action) {
       var message = ChatMessageUtils.getCreatedMessageData(
         action.text,
         action.currentThreadID,
-        action.username
+        action.username,
+        action.users,
+        action.threadname
       );
       _messages[message.id] = message;
       MessageStore.emitChange();

@@ -16,6 +16,19 @@ module.exports = function (router) {
       res.json(data);
     });
   });
+
+  router.get('/dashboard/:user', function (req, res) {
+
+    Message.find({users: req.params.user}, function (err, data) {
+      if (err) {
+        console.log(err);
+        return res.status(500).json({msg: 'internal server error'});
+      }
+      console.log(data);
+      res.json(data);
+    });
+  });
+
   //create message
   router.post('/messages/createmessage', function (req, res) {
     var newMessage = new Message(req.body);
@@ -26,5 +39,18 @@ module.exports = function (router) {
       }
       res.json(data);
     });
+  });
+
+  //edit messages
+  router.patch('/messages/patchmessage', function(req, res) {
+    var threadID = req.body.threadID
+    var userToBeAdded = req.body.username
+    if (err) {
+      console.log(err);
+      return res.status(500).json({msg: 'internal server error'});
+    }
+
+    Message.update({'threadID': threadID}, { $push: {users: usersToBeAdded } })
+    console.log('message updated');
   });
 }

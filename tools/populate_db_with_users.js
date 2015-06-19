@@ -9,7 +9,7 @@ chai.use(chaihttp);
 
 describe('create users with friends',function(){
 	var users = ['monica', 'daren', 'harvey', 'cleo', 'darnet'];
-	var server_url = 'localhost:3000';
+	var server_url = 'localhost:3000'
 	var userKeys = {};
 
 	before(function(done){
@@ -21,8 +21,7 @@ describe('create users with friends',function(){
 				.end(function(err, res){
 					if (err) console.log(err); 		
 					for (var i=0; i<res.body.length; i++){
-						console.log(res.body);
-						userKeys[res.body[i].username]["_id"] =  res.body[i]._id;
+						userKeys[res.body[i].username] = {_id : res.body[i]._id};
 					}	
 					console.log('userKeys', userKeys);
 					done();

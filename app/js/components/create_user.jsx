@@ -1,8 +1,9 @@
 'use strict';
 
-var React = require('react');
-var Fluxxor = require('fluxxor');
-var FluxMixin = Fluxxor.FluxMixin(React);
+var React           = require('react'  );
+var Fluxxor         = require('fluxxor');
+
+var FluxMixin       = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
 var CreateUser = React.createClass({
@@ -41,20 +42,24 @@ var CreateUser = React.createClass({
     if (this.state.newUser.password.length < 1 && this.state.changed)
       passwordError = <span>password cannot be blank</span>;
     if (usernameError || passwordError || !this.state.changed)
-      submitButton = <button type="submit" disabled>Create a new user</button>;
+      submitButton = <button type="submit" disabled>Save New User</button>;
     else
-      submitButton = <button type="submit" >Create a new user</button>;
+      submitButton = <button type="submit" >Save New User</button>;
 
     return (
-      <form name="signupform" onSubmit={this.handleSubmit}>
-        <label htmlFor="email">Email:</label>{emailError}<br/>
-        <input type="text" name="user-email" id="email" value={this.state.newUser.email} onChange={this.handleChange} /><br/>
-        <label htmlFor="username">User Name:</label>{usernameError}<br/>
-        <input type="text" name="user-username" id="username" value={this.state.newUser.username} onChange={this.handleChange} /><br/>
-        <label htmlFor="password">Password:</label>{passwordError}<br/>
-        <input type="password" name="user-password" id="password" value={this.state.newUser.password} onChange={this.handleChange} /><br/>
-        {submitButton}
-      </form>
+      <section  className="sign-in">
+        <form name="signupform" onSubmit={this.handleSubmit}>
+          <ul>
+            <li><label htmlFor="email">Email:</label>{emailError}</li>
+            <li><input type="text" name="user-email" id="email" value={this.state.newUser.email} onChange={this.handleChange} /></li>
+            <li><label htmlFor="username">User Name:</label>{usernameError}</li>
+            <li><input type="text" name="user-username" id="username" value={this.state.newUser.username} onChange={this.handleChange} /><  /li>
+            <li><label htmlFor="password">Password:</label>{passwordError}</li>
+            <li><input type="password" name="user-password" id="password" value={this.state.newUser.password} onChange={this.handleChange} /></li>
+            <li>{submitButton}</li>
+          </ul>
+        </form>
+      </section>
     )
   }
 });
