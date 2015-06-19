@@ -1,16 +1,20 @@
 'use strict';
 
-var React           = require('react'  );
-var Fluxxor         = require('fluxxor');
+var React   = require('react'                  );
+var Fluxxor = require('fluxxor'                );
+var auth    = require('../actions/login_action');
 
 var FluxMixin       = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
+import { Router, Route, Link, Navigation } from 'react-router';
 
 var Login = React.createClass({
-  mixins: [FluxMixin],
+  mixins: [FluxMixin, Navigation],
+
   getInitialState: function() {
     return {user: {username: '', password: ''}};
   },
+
   handleChange: function(event) {
     var stateCopy = this.state;
     stateCopy.changed = true;
@@ -21,11 +25,15 @@ var Login = React.createClass({
 
     this.setState(stateCopy);
   },
+
   handleSubmit: function(event) {
     event.preventDefault();
 
+    auth.loginUser(event);
+
     this.getFlux().actions.login(this.state.user);
   },
+
   render: function() {
     var usernameError;
     var passwordError;

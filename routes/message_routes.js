@@ -44,14 +44,14 @@ module.exports = function (router) {
 
   //edit messages
   router.patch('/messages/patchmessage', eatAuth, function(req, res) {
-    var threadID = req.body.threadID
-    var userToBeAdded = req.body.username
+    var threadID = req.body.threadID;
+    var userToBeAdded = req.body.username;
     if (err) {
       console.log(err);
       return res.status(500).json({msg: 'internal server error'});
     }
 
-    Message.update({'threadID': threadID}, { $push: {users: usersToBeAdded } })
+    Message.update({'threadID': threadID}, { $push: {users: usersToBeAdded } });
     console.log('message updated');
   });
-}
+};

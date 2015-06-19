@@ -4,4 +4,4 @@ module.exports = function() {
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     next();
   };
-}
+};

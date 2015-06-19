@@ -15,8 +15,7 @@ function getMessageListItem(message) {
   return (
     <MessageListItem
       key={message.id}
-      message={message}
-    />
+      message={message}/>
   );
 }
 

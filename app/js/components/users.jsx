@@ -1,8 +1,8 @@
 'use strict';
 
-var React           = require('react'           );
-var Fluxxor         = require('fluxxor'         );
-var UsersForm       = require('./users_form.jsx');
+var React     = require('react'           );
+var Fluxxor   = require('fluxxor'         );
+var UsersForm = require('./users_form.jsx');
 
 var FluxMixin = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
