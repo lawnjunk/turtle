@@ -21,9 +21,11 @@ describe('create users with friends',function(){
 				.end(function(err, res){
 					if (err) console.log(err); 		
 					for (var i=0; i<res.body.length; i++){
-						console.log(res.body);
-						userKeys[res.body[i].username] = {_id: res.body[i]._id};
+						console.log('lul', res.body);
+						userKeys[res.body[i].username]["_id"] =  res.body[i]._id;
 					}	
+					console.log('done createing users');
+					console.log('userKeys', userKeys);
 					done();
 				});
 		};
@@ -34,6 +36,8 @@ describe('create users with friends',function(){
 				.auth(name, name)
 				.end(function(err, res){
 					if (err) console.log(err);
+					console.log('login', res.body);
+					console.log('name', name);
 					userKeys[name] = {};
 					userKeys[name].key = res.body.eat;
 					users_created_count++;
@@ -65,6 +69,7 @@ describe('create users with friends',function(){
 						.send({eat: userKeys[userFrom].key , user_id: userKeys[userTo]._id})
 						.end(function(err, res){
 							if (err) console.log(err);
+							console.log(res.body);
 							freindsMadeCount++;
 							if (freindsMadeCount === users.length) {
 								friendsDoneMakingRequestCount++;
