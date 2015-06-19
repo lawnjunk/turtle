@@ -11,6 +11,7 @@ module.exports = {
     var serverReq =
       request
         .get('/api/dashboard')
+        .set('eat', Cookies.get('eat'))
         .end(function(err, res) {
           if(err) {
             return console.log(err);
@@ -59,6 +60,7 @@ module.exports = {
     request
     .post('/api/messages/createmessage')
     .send(createdMessage)
+    .set('eat', Cookies.get('eat'))
     .end(function(err, res) {
       if(err) {
         return console.log(err);
@@ -77,6 +79,7 @@ module.exports = {
     }
     request
     .patch('/api/messages/patchmessage')
+    .set('eat', Cookies.get('eat'))
     .send(patchpackage)
     .end(function(err, res) {
       if(err) {
