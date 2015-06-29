@@ -1,0 +1,48 @@
+/*Mobile display*/
+@media(min-width:400px) {
+  .header__nav--button{
+    background-color: rgb(255, 0, 0);
+  }
+  .chatArea{
+    max-width: 100%;
+  }
+  .message__emocon--enter{
+
+  }
+/*slide menu*/
+  li:even{
+    background-color: purple;
+  }
+  li:odd{
+    background-color: orange;
+  }
+  li:nth-child(3n){
+    background-color: red;
+  }
+  li:nth-child(4n){
+    background-color: yellow;
+  }
+  .footer__Button{
+    margin: 0 auto;
+  }
+}
+/*Log in*/
+h1{
+  border: 1px solid black;
+  padding: 10px;
+}
+#signIN{
+  border-top: 10px;
+}
+
+/*Desktop users*/
+.nav__Button{
+  text-align: center;
+}
+.aside__Rooms{
+
+}
+.textArea{
+  width: 50%;
+  float: right;
+}
