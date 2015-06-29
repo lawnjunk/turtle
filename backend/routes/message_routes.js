@@ -18,6 +18,24 @@ module.exports = function (router) {
     });
   });
 
+  router.get('/threads', function(req, res) {
+    var jsonData = {
+      threads: [
+        {roomID: 1, messages: [
+          {timestamp: Date.now(), username: 'UserX', message: 'User X says X'},
+          {timestamp: Date.now(), username: 'UserY', message: 'I am Y'},
+          {timestamp: Date.now(), username: 'UserX', message: 'But I am X'}
+        ]},
+        {roomID: 2, messages: [
+          {timestamp: Date.now(), username: 'UserP', message: 'Hello, I am P'},
+          {timestamp: Date.now(), username: 'UserQ', message: 'My name is Q'},
+          {timestamp: Date.now(), username: 'UserP', message: 'Hello Q'}
+        ]}
+      ]
+    };
+    res.json(jsonData)
+  });
+
   router.get('/dashboard/:user', eatAuth, function (req, res) {
 
     Message.find({users: req.params.user}, function (err, data) {

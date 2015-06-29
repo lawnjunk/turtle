@@ -6,8 +6,8 @@ var passport = require('passport');
 var app      = express();
 var http = require('http').createServer(app);
 var io = require('socket.io').listen(http);
-var eat_io_auth = require('./lib/eat_auth_io.js');
-var cors = require('./cors');
+var eat_io_auth = require('./backend/lib/eat_auth_io.js');
+var cors = require('./backend/cors');
 var redirect = require("express-redirect");
 
 var connectedUses = {};
@@ -30,7 +30,7 @@ mongoose.connect(process.env.MONGOLAB_URI);
 
 // init passport strat
 app.use(passport.initialize());
-require('./lib/passport_strategy.js')(passport);;
+require('./backend/lib/passport_strategy.js')(passport);;
 app.use(cors());
 
 // routers
@@ -40,10 +40,10 @@ var contactRouter = express.Router();
 var messageRouter = express.Router();
 
 // load routers
-require('./routes/user_routes.js')(usersRouter);
-require('./routes/auth_routes.js')(authRouter, passport);
-require('./routes/contacts_routes.js')(contactRouter);
-require('./routes/message_routes.js')(messageRouter);
+require('./backend/routes/user_routes.js')(usersRouter);
+require('./backend/routes/auth_routes.js')(authRouter, passport);
+require('./backend/routes/contacts_routes.js')(contactRouter);
+require('./backend/routes/message_routes.js')(messageRouter);
 
 // assign base routes to routers
 app.use('/api', usersRouter);
