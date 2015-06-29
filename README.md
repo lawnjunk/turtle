@@ -18,30 +18,7 @@ come by. Turtle celebrates conversaions in the present. Turtle is simply text ch
 ---
 ## Dev notes
 * so far we only suport UTF-8 messages
-* we need to add support for images, youtube, soundcloud
+* working on converting to io
+* hand over to kumar
 ---
 ## API docks
-## User Routes
-#### Create
-* **POST /api/users**
- * **Post Body:** ```{email: [unique email], username: [unique username], password: [passwd]}```
- * **Response**
-   * **Success:** ```{sucess: true:, usernamePass: true, emailPass: true, passwordPass: true}```
-    * **Failure:** ```{sucess: false:, usernamePass: [false if not unique], emailPass: [false if not unique], passwordPass: [false if empty]}```
-
-#### Login
-* **GET /api/login**
- * **Header**
-   * **Auth:**  ```email:password```
- * **Response**
-   * **Success:** ``` {success: true, eat: eat} ```
-    * **Failure:** ``` {success: false, msg: 'error logging in'}```
-
-## Contacts List Routes
-#### Friend Request
-#### Accept Friend Request
-#### Deny Friend Request
-
-
-#### Thank You to:
-Facebook Flux team, for the flux-chat example which was used as a base that we built on top of.
