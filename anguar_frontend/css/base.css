@@ -2,7 +2,6 @@ input:not(#message-text) {
   display: block;
 }
 
-/* Layout */
 body {
   max-width: 968px;
   margin-left: auto;
@@ -26,8 +25,12 @@ footer:not(.message-box) {
 }
 
 nav li {
-  display-list-style: none;
   display: inline-block;
+  display-list-style: none;
+}
+
+.display-block li{
+  display: block;
 }
 
 .message-box {
@@ -35,10 +38,23 @@ nav li {
   margin: 0;
 }
 
-.chat-box {
-  max-width: 50%;
+input[name='message-text'] {
+  width: 79.2%;
 }
 
-input[name='message-text'] {
-  width: 80%;
+/* Layout */
+
+.flexbox-container {
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.flexbox-container > article {
+  width: 50%;
+  padding: 10px;
+}
+
+.flexbox-container > article:first-child {
+  margin-right: 20px;
 }
