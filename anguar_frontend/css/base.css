@@ -1,3 +1,26 @@
 input {
   display: block;
 }
+
+/* Layout */
+body {
+  max-width: 968px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+form {
+  max-width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+fieldset {
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+footer {
+  text-align: center;
+}
