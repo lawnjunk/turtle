@@ -1,4 +1,4 @@
-input {
+input:not(#message-text) {
   display: block;
 }
 
@@ -9,7 +9,7 @@ body {
   margin-right: auto;
 }
 
-form {
+form:not(.message-text) {
   max-width: 50%;
   margin-left: auto;
   margin-right: auto;
@@ -21,6 +21,24 @@ fieldset {
   margin-right: auto;
 }
 
-footer {
+footer:not(.message-box) {
   text-align: center;
+}
+
+nav li {
+  display-list-style: none;
+  display: inline-block;
+}
+
+.message-box {
+  border: 1px solid black;
+  margin: 0;
+}
+
+.chat-box {
+  max-width: 50%;
+}
+
+input[name='message-text'] {
+  width: 80%;
 }
