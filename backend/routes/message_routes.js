@@ -37,11 +37,11 @@ module.exports = function (router) {
   });
 
   router.post('/new_message', function(req, res) {
-    if (!req.body.username) {res.json({msg: 'fail: send a username!'})}
-    if (!req.body.roomID) {res.json({msg: 'fail: send a roomID!'})}
-    if (!req.body.message) {res.json({msg: 'fail: send a message!'})}
-    if (!req.body.timestamp) {res.json({msg: 'fail: send a timestamp!'})}
-    res.json({msg: 'successful post!'})
+    if (!req.body.username) {return res.json({msg: 'fail: send a username!'})}
+    if (!req.body.roomID) {return res.json({msg: 'fail: send a roomID!'})}
+    if (!req.body.message) {return res.json({msg: 'fail: send a message!'})}
+    if (!req.body.timestamp) {return res.json({msg: 'fail: send a timestamp!'})}
+    return res.json({msg: 'successful post!'})
   });
 
   router.get('/dashboard/:user', eatAuth, function (req, res) {
