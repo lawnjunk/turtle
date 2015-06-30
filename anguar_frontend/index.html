@@ -14,41 +14,48 @@
 
     <header role="banner">
       <nav role="navigation">
+        <h1>Whaddup Turtle?</h1>
       </nav>
     </header>
 
     <main role="main">
-      <article id="shell-container">
-        <form role="form">
-          <fieldset>
-            <legend>Login</legend>
-            <label for="name">Username:</label>
-            <input aria-label="Username" name="name" id="name" class="stored" type="text" value="" placeholder="Enter your username" required>
-            <label for="password">Password:</label>
-            <input aria-label="Password" name="password" id="password" type="password" value="" placeholder="Enter your password" required>
-            <button>Login</button>
-            <button>Create New User</button>
-          </fieldset>
-        </form>
+      <article id="flip-container">
+        <section class="shell">
+          <section class="face front">
+            <form role="form">
+              <fieldset>
+                <legend>Login</legend>
+                <label for="name">Username:</label>
+                <input aria-label="Username" name="name" id="name" class="stored" type="text" value="" placeholder="Enter your username" required>
+                <label for="password">Password:</label>
+                <input aria-label="Password" name="password" id="password" type="password" value="" placeholder="Enter your password" required>
+                <button>Login</button>
+                <button id="new_user">Create New User</button>
+              </fieldset>
+            </form>
+          </section>
 
-        <form role="form">
-          <fieldset>
-            <legend>Create New User</legend>
-            <label for="new_username">Username:</label>
-            <input aria-label="Username" name="new_username" id="new_username" class="stored" type="text" value="" placeholder="Enter a username" required>
-            <label for="new_password">Password:</label>
-            <input aria-label="Password" name="new_password" id="new_password" type="password" value="" placeholder="Enter a password" required>
-            <label for="email">Email:</label>
-            <input aria-label="Email" name="new_email" id="new_email" class="stored" type="email" value="" placeholder="example@example.com" required>
-            <button>Sign Up</button>
-          </fieldset>
-        </form>
+          <section class="face back">
+            <form role="form">
+              <fieldset>
+                <legend>Create New User</legend>
+                <label for="new_username">Username:</label>
+                <input aria-label="Username" name="new_username" id="new_username" class="stored" type="text" value="" placeholder="Enter a username" required>
+                <label for="new_password">Password:</label>
+                <input aria-label="Password" name="new_password" id="new_password" type="password" value="" placeholder="Enter a password" required>
+                <label for="email">Email:</label>
+                <input aria-label="Email" name="new_email" id="new_email" class="stored" type="email" value="" placeholder="example@example.com" required>
+                <button>Sign Up</button>
+              </fieldset>
+            </form>
+          </section>
+        </section>
       </article>
     </main>
 
-    <footer role="contentinfo">
+    <!-- <footer role="contentinfo">
       <p>© Copyright 2015 Turtle</p>
-    </footer>
+    </footer> -->
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
     <script type="text/javascript" src="js/localStorage.js"></script>

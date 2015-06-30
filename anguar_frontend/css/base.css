@@ -464,11 +464,6 @@ th {
 }
 
 /*===== Base Styles =====*/
-
-button {
-  margin: -.15em;
-}
-
 input:not(#message-text) {
   display: block;
 }
@@ -523,6 +518,10 @@ nav li {
   display: block;
 }
 
+.send-button:before {
+  content: "Send";
+}
+
 .message-box {
   border: 1px solid black;
   margin: 0;
@@ -537,6 +536,10 @@ input[name='message-text'] {
   background-color: #78AB46;
 }
 
+.green-border {
+  border: 5em solid #78AB46;
+}
+
 /* Layout */
 
 .flexbox-container {
@@ -544,7 +547,20 @@ input[name='message-text'] {
   display: -webkit-flex;
   display: flex;
   flex-direction: row;
-  /*flex-wrap: wrap;*/
+}
+
+button {
+  vertical-align: bottom;
+}
+
+#send {
+  width:13%;
+  margin: 0;
+}
+
+#emoticon {
+  width: 5%;
+  margin: 0;
 }
 
 .flexbox-container > article {
@@ -561,8 +577,8 @@ input[name='message-text'] {
   margin-right: 20px;
 }
 
-.send-button:before {
-  content: "Send";
+.copyright {
+  padding: .5em;
 }
 
 @media only screen and (max-width: 480px) {
@@ -589,10 +605,6 @@ input[name='message-text'] {
   .message-box {
     width: 100%;
     margin: 0;
-  }
-
-  .send-button:before {
-    content: "\e052";
   }
 }
 
@@ -655,3 +667,62 @@ ul{
 p{
   margin-bottom: 118px;
 }*/
+.navbar li {
+  background: none;
+}
+
+nav h1 {
+  border: none;
+  text-align: center;
+}
+
+/*===== Turtle Shell Flip=====*/
+.flip-container {
+  padding: 1em;
+  text-align: center;
+  display: flex;
+  flex-wrap: nowrap;
+  -webkit-perspective: 80em;
+  perspective: 80em;
+}
+
+.shell {
+  width: 25em;
+  height: 25em;
+  margin: 0 auto;
+  position: relative;
+  -webkit-transition: all .4s linear;
+  transition: all .4s linear;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+.face {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  backface-visibility: hidden;
+}
+
+.front {
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center; /* align vertical */
+  background: url(../images/turtleshell.jpg) center no-repeat;
+  z-index: 2;
+}
+
+.back {
+  z-index: 1;
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center; /* align vertical */
+  background: url(../images/turtleback.jpg) center no-repeat;
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+.shell:hover {
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
