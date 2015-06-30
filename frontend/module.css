@@ -1,26 +1,28 @@
 /*Mobile display*/
 @media(min-width:400px) {
-  .header__nav--button{
-    background-color: rgb(255, 0, 0);
-  }
   .chatArea{
     max-width: 100%;
   }
   .message__emocon--enter{
 
   }
+}
 /*slide menu*/
-  li:even{
-    background-color: purple;
+  .side__li{
+    padding: 10px;
+    margin-bottom: 5px;
   }
-  li:odd{
-    background-color: orange;
+  li:nth-child(even){
+    background: linear-gradient(to left,rgb(165, 106, 166),rgb(163, 61, 166));
+  }
+  li:nth-child(odd){
+    background: linear-gradient(to left,rgba(217, 24, 40,.8),rgb(217, 56, 56));
   }
   li:nth-child(3n){
-    background-color: red;
+    background: linear-gradient(to left,rgba(136,187,254,.8),rgb(50, 137, 254));
   }
   li:nth-child(4n){
-    background-color: yellow;
+    background: linear-gradient(to left,rgb(242, 146, 56),rgba(242,116,5,.8));
   }
   .footer__Button{
     margin: 0 auto;
@@ -36,13 +38,17 @@ h1{
 }
 
 /*Desktop users*/
+ul{
+  padding: 0;
+}
 .nav__Button{
-  text-align: center;
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 .aside__Rooms{
 
 }
-.textArea{
-  width: 50%;
-  float: right;
+p{
+  margin-bottom: 118px;
 }
