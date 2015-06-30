@@ -46,7 +46,9 @@ input[type=checkbox] {
    left: -9999px;
 }
 
+/* Fix the checkbox hack button */
 input[type=checkbox]:checked ~ div
+/* Fix the checkbox hack button above */
 
 .pointer {
   cursor: pointer;
@@ -62,10 +64,6 @@ form:not(.message-text) {
   max-width: 50%;
   margin-left: auto;
   margin-right: auto;
-}
-
-article {
-  background-color: #FFFCCF;
 }
 
 fieldset {
