@@ -500,6 +500,11 @@ fieldset {
   margin-right: auto;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 footer:not(.message-box) {
   text-align: center;
 }
@@ -640,7 +645,8 @@ button {
 /*slide menu*/
   li{
     padding: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 0;
+    border: 1px solid gray;
   }
   li:nth-child(even){
     background: linear-gradient(to left,rgb(165, 106, 166),rgb(163, 61, 166));
@@ -687,6 +693,7 @@ p{
 }*/
 .navbar li {
   background: none;
+  border: none;
 }
 
 nav h1 {
