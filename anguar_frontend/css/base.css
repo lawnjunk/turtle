@@ -553,6 +553,11 @@ button {
   vertical-align: bottom;
 }
 
+.center-element {
+  margin-right: auto;
+  margin-left: auto;
+}
+
 #send {
   width:13%;
   margin: 0;
@@ -561,6 +566,15 @@ button {
 #emoticon {
   width: 5%;
   margin: 0;
+}
+
+#create_room {
+  display: block;
+  width: 100%;
+}
+
+.hamburger-hide {
+  display: none;
 }
 
 .flexbox-container > article {
@@ -600,6 +614,10 @@ button {
 
   .copyright {
     display: none;
+  }
+
+  .hamburger-hide {
+    display: inline-block;
   }
 
   .message-box {
