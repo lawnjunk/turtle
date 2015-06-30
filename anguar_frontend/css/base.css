@@ -40,6 +40,18 @@ input:not(#message-text) {
   display: block;
 }
 
+input[type=checkbox] {
+   position: absolute;
+   top: -9999px;
+   left: -9999px;
+}
+
+input[type=checkbox]:checked ~ div
+
+.pointer {
+  cursor: pointer;
+}
+
 body {
   max-width: 968px;
   margin-left: auto;
