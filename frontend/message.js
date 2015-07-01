@@ -2,30 +2,30 @@ $(function() {
   // post on the message
   $.ajax({
     type: 'GET',
-    url: '',
-    sucess: function(thread) {
-      $.each(thread, function(i, threads) {
-        $('#message').append('<p>' + thread.message() + '<p>');
+    url: 'https://warm-escarpment-7619.herokuapp.com/api/threads',
+    success: function(data) {
+      $.each(data.threads, function(i, thread) {
+        $.each(thread.messages,function(i,message){
+          $('#chat-box').append('<p>' + ' '+ thread.roomID +' '+ message.username + ' ' + message.message +'<p>');
+        });
       });
     }
   });
+
   // get the response from the server
   $.ajax({
-    var message {
-      roomID = $('#roomID').val(),
-        mess = $('#message').val(),
+    var message = {
+      roomID= '1',
+      timestamp = $('#message-text').now(),
+      username = 'Andre',
+      message = $('#message-text').val(),
     }
     type: 'POST',
-      url: '',
+      url: 'https://warm-escarpment-7619.herokuapp.com/api/threads',
       data: message,
-      sucess: function(newthread) {
-        $('#message').append(newthread.roomID + newthread.mess);
+      success: function(newthread) {
+        console.log("added data" newthread);
       }
   });
-  // going through get the timestamp,username,and message
-  var message = function(array) {
-    $.each(array, function(i, message) {
-      return message.timestamp, message.user, message.mess, ;
-    });
-  });
+
 });
