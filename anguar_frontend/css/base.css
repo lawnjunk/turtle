@@ -536,6 +536,10 @@ input[name='message-text'] {
   width: 79.2%;
 }
 
+.chat-box {
+  height: 80%;
+}
+
 /* Utilities */
 .green-background {
   background-color: #78AB46;
@@ -615,6 +619,16 @@ button {
     width: 100%;
     padding: 0px;
     margin: 0 auto;
+  }
+
+  .message-box {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+
+  aside {
+    display: none;
   }
 
   .copyright {
