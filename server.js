@@ -33,7 +33,7 @@ app.use('/api', authRouter);
 app.use('/api', messageRouter);
 
 // load static build/assets
-app.use(express.static(__dirname + '/build'));
+app.use(express.static(__dirname + '/frontend'));
 
 // start server
 app.listen(process.env.PORT, function() {
