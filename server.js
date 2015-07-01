@@ -18,18 +18,15 @@ app.use(passport.initialize());
 require('./backend/lib/passport_strategy.js')(passport);
 
 // routers
-var usersRouter = express.Router();
-var authRouter = express.Router();
+var userRouter = express.Router();
 var messageRouter = express.Router();
 
 // load routers
-require('./backend/routes/user_routes.js')(usersRouter);
-require('./backend/routes/auth_routes.js')(authRouter, passport);
+require('./backend/routes/user_routes.js')(userRouter, passport);
 require('./backend/routes/message_routes.js')(messageRouter);
 
 // assign base routes to routers
-app.use('/api', usersRouter);
-app.use('/api', authRouter);
+app.use('/api', userRouter);
 app.use('/api', messageRouter);
 
 // load static build/assets

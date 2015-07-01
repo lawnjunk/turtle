@@ -1,24 +1,79 @@
 'user strict';
 
 var bodyparser = require('body-parser');
-var eatAuth    = require('../lib/eat_auth.js')(process.env.AUTH_SECRET);
 var User       = require('../models/User.js');
 var _          = require("lodash");
-var roleAuth   = require("../lib/role_auth.js");
 
 
-module.exports = function loadUserRoutes(router) {
+module.exports = function loadUserRoutes(router, passport) {
   router.use(bodyparser.json());
+
+  // Existing user login
+  router.get('/sign_in', passport.authenticate('basic', {session: false}), function(req, res) {
+    // passport_strategy adds req.user
+    req.user.generateToken(process.env.AUTH_SECRET, function(err, token) {
+      if (err) {
+        console.log('Error signin user in. Error: ', err);
+        return res.status(500).json({success: false, eat: null, msg: 'error logging in'});
+      }
+      res.json({success: true, eat: token, username: req.user.basic.username});
+    });
+  });
 
   // Create new user
   router.post('/users', function(req, res) {
     // Explicitly populate user model to avoid overflow exploit
     var newUser = new User({
-      username: req.body.username,
       basic: {
-        email: req.body.email
+        email: req.body.email,
+        username: req.body.username
       }
     });
+
+    if(req.body.password === undefined) {
+      console.log('No password submitted');
+      return res.status(401).json({
+        'success': false,
+        'msg': 'No password submitted'
+      });
+    }
+    newUser.generateHash(req.body.password, function(err, hash) {
+      if(err) {
+        console.log(err);
+        return res.status(500).json({
+          'success': false,
+          'msg': 'Could not create user'
+        });
+
+      }
+      newUser.basic.password = hash;
+      newUser.save(function(err, user) {
+        if(err) {
+          console.log(err);
+          return res.status(500).json({
+            'success': false,
+            'msg': 'Could not create user'
+          });
+        }
+        user.generateToken(process.env.APP_SECRET, function(err, token) {
+          if(err) {
+            console.log(err);
+            return res.status(500).json({
+              'success': false,
+              'msg': 'Error generating token'
+            });
+          }
+
+          res.json({
+            'success': true,
+            'msg': 'You have successfully created a user',
+            'data': {
+              'token': token,
+            }
+          });
+        });
+      });
+
 
     // generate hash & save user
     newUser.generateHash(req.body.password, function(hash) {
@@ -33,64 +88,8 @@ module.exports = function loadUserRoutes(router) {
         if (err) {
           return res.status(500).json({success: false,  usernamePass: null, emailPass: null, passwordPass: null});
         }
-
         res.json({success: true, usernamePass: true, emailPass: true, passwordPass: null});
       });
     });
   });
-
-  // Update user - CURRENTLY UNUSED
-  router.patch('/users/:username', eatAuth, function(req, res) {
-    var updatedUserInfo = req.body;
-    delete updatedUserInfo._id;
-    delete updatedUserInfo.eat;     // delete encoded token
-
-    if (username !== req.user.username) {  // verify ownership
-      console.log('User tried to delete another user.');
-      return res.status(401).json({msg: 'Unauthorized.'});
-    }
-
-    User.update({'username': req.body.username}, function() {
-      switch(true) {
-        case !!(err && err.code === 11000):
-          return res.json({msg: 'username already exists - please try a different username'});
-        case !!(err && err.username):
-          return res.json({msg: err.username.message.replace('Path', '')});
-        case !!err:
-          console.log(err);
-          return res.status(500).json({msg: 'internal server error'});
-      }
-
-      res.json({msg: 'user updated'});
-    });
-  });
-
-  router.delete('/users/:username', eatAuth, function(req, res) {
-		router.use(adminAuth);
-    var username = req.params.username;
-
-    User.findOne({ username: req.body.username }, function (err, user){
-      user.suspended = true;
-      user.save();
-    });
-
-    res.json({msg: "user successfully suspended"});
-  });
-
-	router.get('/users', eatAuth, function(req, res){
-		User.find({},function(err, data){
-			if (err) {
-				console.log(err);
-				res.status(500).json({success: false, msg: 'server found no users'});
-			}
-			var userList = [];
-			for ( userIndex in data ){
-				var user = {};
-				user.username = data[userIndex].username;
-				user._id = data[userIndex]._id;
-				userList.push(user);
-			}
- 			res.json(userList);	
-		});
-	});
 };
