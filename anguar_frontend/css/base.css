@@ -1,0 +1,138 @@
+
+/*===== Base Styles =====*/
+@font-face {
+  font-family: 'icomoon';
+  src:url('../fonts/icomoon.eot?qpazhp');
+  src:url('../fonts/icomoon.eot?#iefixqpazhp') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?qpazhp') format('truetype'),
+    url('../fonts/icomoon.woff?qpazhp') format('woff'),
+    url('../fonts/icomoon.svg?qpazhp#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-play:before {
+  content: "\e052";
+}
+.icon-cross:before {
+  content: "\e117";
+}
+.icon-menu:before {
+  content: "\e120";
+}
+
+/*===== Base Styles =====*/
+
+input:not(#message-text) {
+  display: block;
+}
+
+input[type=checkbox] {
+   position: absolute;
+   top: -9999px;
+   left: -9999px;
+}
+
+input[type=checkbox]:checked ~ div
+
+.pointer {
+  cursor: pointer;
+}
+
+body {
+  max-width: 968px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+form:not(.message-text) {
+  max-width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+article {
+  background-color: #FFF68F;
+}
+
+fieldset {
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+footer:not(.message-box) {
+  text-align: center;
+}
+
+nav li {
+  display: inline-block;
+  display-list-style: none;
+}
+
+.display-block li{
+  display: block;
+}
+
+.message-box {
+  margin-top: 118px;
+  border: 1px solid black;
+  /*margin: 0;*/
+}
+
+input[name='message-text'] {
+  width: 79.2%;
+}
+
+/* Layout */
+
+.flexbox-container {
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.flexbox-container > article {
+  width: 66%;
+  padding: 10px;
+}
+
+.flexbox-container > aside {
+  width: 33%;
+  padding: 10px;
+}
+
+.flexbox-container > article:first-child {
+  margin-right: 20px;
+}
+/*emjoi icons*/
+.hidden{
+  display: none;
+}
+.emjoi_list{
+  width: 30%;
+  display: absolute;
+}
+/*testing background*/
+body{
+  /*http://i.imgur.com/EiSTk.png*/
+  background: url(../background.png) no-repeat center center fixed;
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ -o-background-size: cover;
+ background-size: cover;
+}
