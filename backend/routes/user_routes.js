@@ -37,7 +37,6 @@ module.exports = function loadUserRoutes(router, passport) {
         });
       }
       newUser.basic.password = hash;
-      console.log(newUser);
       newUser.save(function(err, user) {
         if(err) {
           console.log(err);
