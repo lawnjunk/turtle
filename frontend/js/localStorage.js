@@ -15,7 +15,8 @@ $(document).ready(function () {
   $('#login').click(login);
   $('#create_new').click(create_new);
 
-  function login() {
+  function login(e) {
+    e.preventDefault();
     var basicAuth = $('#name').val() + ':' + $('#password').val();
     $.ajax({
       type: 'GET',
@@ -27,13 +28,12 @@ $(document).ready(function () {
           'Basic ' + btoa(basicAuth)
         );
       },
-      success: function(data) {
-        console.log(data);
-      }
+      success: saveToken
     });
   }
 
-  function create_new() {
+  function create_new(e) {
+    e.preventDefault();
     var userData = {
       username: $('#new_username').val(),
       email: $('#new_email').val(),
@@ -44,11 +44,13 @@ $(document).ready(function () {
       data: JSON.stringify(userData),
       contentType: 'application/json',
       url: '/api/create_new_user',
-      success: function(data) {
-        var token = data.token;
-        window.localStorage.setItem("login_token", token);
-      }
+      success: saveToken
     });
+  }
+
+  function saveToken(data) {
+    var token = data.token;
+    window.localStorage.setItem("login_token", token);
   }
 });
 

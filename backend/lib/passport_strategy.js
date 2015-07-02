@@ -6,8 +6,6 @@ var User          = require('../models/User.js');
 // Load strategy into passport
 module.exports = function passportStrategy(passport) {
   passport.use('basic', new BasicStrategy({}, function(userIdentifier, password, done) { // Auth username/pass sent in header
-    console.log(userIdentifier);
-    console.log(password);
     User.findOne({'basic.username': userIdentifier}, function(err, user) {
       if (err) {return done('database error');}
       if (!user) {
