@@ -1,11 +1,19 @@
-/*Log in*/
 h1{
   border: 1px solid black;
   padding: 10px;
   margin: 0;
 }
 
-/*Desktop users*/
+/*===== Emoji Icons =====*/
+.hidden{
+  display: none;
+}
+.emjoi_list{
+  width: 30%;
+  display: absolute;
+}
+
+/*===== Desktop Users =====*/
 ul {
   padding: 0;
 }
@@ -33,6 +41,10 @@ button {
   margin-left: auto;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 /*===== IDs =====*/
 #send {
   width:13%;
@@ -49,7 +61,7 @@ button {
   width: 100%;
 }
 
-/*=====Mobile-First Styles=====*/
+/*===== Mobile-First Styles =====*/
 
 .flexbox-container {
   display: -ms-flex;
@@ -133,15 +145,7 @@ button {
 
 /*Mobile display*/
 @media(min-width:400px) {
-  .header__nav--button{
-    background-color: rgb(255, 0, 0);
-  }
-  .chatArea{
-    max-width: 100%;
-  }
-  .message__emocon--enter{
 
-  }
 /*slide menu*/
   li{
     padding: 10px;
@@ -163,8 +167,5 @@ button {
   }
   li:nth-child(4n){
     background: linear-gradient(to left,rgb(242, 146, 56),rgba(242,116,5,.8));
-  }
-  .footer__Button{
-    margin: 0 auto;
   }
 }

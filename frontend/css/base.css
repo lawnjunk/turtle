@@ -1,9 +1,9 @@
 /*===== CSS Normalize =====*/
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
-  font-family: sans-serif; /* 1 */
-  -ms-text-size-adjust: 100%; /* 2 */
-  -webkit-text-size-adjust: 100%; /* 2 */
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -197,10 +197,6 @@ input[type=checkbox] {
 
 input[type=checkbox]:checked ~ div
 
-.pointer {
-  cursor: pointer;
-}
-
 body {
   max-width: 968px;
   margin-left: auto;
@@ -268,17 +264,9 @@ input[name='message-text'] {
 .flexbox-container > article:first-child {
   margin-right: 20px;
 }
-/*emjoi icons*/
-.hidden{
-  display: none;
-}
-.emjoi_list{
-  width: 30%;
-  display: absolute;
-}
-/*testing background*/
+
 body{
-  /*http://i.imgur.com/EiSTk.png*/
+  /*Image source: http://i.imgur.com/EiSTk.png. We need to change this.*/
   background: url(../background.png) no-repeat center center fixed;
  -webkit-background-size: cover;
  -moz-background-size: cover;
