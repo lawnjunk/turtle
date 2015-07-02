@@ -46,6 +46,7 @@ $(document).ready(function () {
       url: '/api/create_new_user',
       success: function(data) {
         var token = data.token;
+        window.localStorage.setItem("login_token", token);
       }
     });
   }
