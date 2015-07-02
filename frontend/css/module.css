@@ -1,0 +1,171 @@
+h1{
+  border: 1px solid black;
+  padding: 10px;
+  margin: 0;
+}
+
+/*===== Emoji Icons =====*/
+.hidden{
+  display: none;
+}
+.emjoi_list{
+  width: 30%;
+  display: absolute;
+}
+
+/*===== Desktop Users =====*/
+ul {
+  padding: 0;
+}
+
+.nav__Button{
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+li:hover{
+  background: rgb(106, 220, 9);
+}
+article{
+  border-radius: 5px;
+}
+
+button {
+  vertical-align: bottom;
+}
+
+/*===== Utilities =====*/
+.center-element {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+/*===== IDs =====*/
+#send {
+  width:13%;
+  margin: 0;
+}
+
+#emoticon {
+  width: 5%;
+  margin: 0;
+}
+
+#create_room {
+  display: block;
+  width: 100%;
+}
+
+/*===== Mobile-First Styles =====*/
+
+.flexbox-container {
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+}
+
+.flexbox-container > article {
+  width: 100%;
+  padding: 0px;
+  margin: 0 auto;
+}
+
+.flexbox-container > aside {
+  width: 100%;
+  padding: 0px;
+  margin: 0 auto;
+  display: none;
+}
+
+.message-box {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.copyright {
+  display: none;
+}
+
+.hamburger-hide {
+  display: inline-block;
+}
+
+/*=====Media Queries for Desktop=====*/
+/* Hidden Chat Room Feature */
+@media screen and (min-width: 450px) {
+  .flexbox-container {
+    flex-direction: row;
+  }
+
+  .items {
+    width: 61%;
+    margin-right: 2%;
+    position: relative; top: 1%;
+    display: none;
+  }
+
+  .message-box {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+
+  .hamburger-hide {
+    display: none;
+  }
+
+  .flexbox-container > article {
+    width: 66%;
+    padding: 10px;
+  }
+
+  .flexbox-container > aside {
+    width: 33%;
+    padding: 10px;
+    display: block;
+  }
+
+  .flexbox-container > article:first-child {
+    margin-right: 20px;
+  }
+
+  .copyright {
+    padding: .5em;
+  }
+}
+
+/*Mobile display*/
+@media(min-width:400px) {
+
+/*slide menu*/
+  li{
+    padding: 10px;
+    margin-bottom: 5px;
+    -moz-border-radius-topright: 5px;
+    -moz-border-radius-bottomright: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+  }
+  li:nth-child(even){
+    background: linear-gradient(to left,rgb(165, 106, 166),rgb(163, 61, 166));
+  }
+  li:nth-child(odd){
+    background: linear-gradient(to left,rgba(217, 24, 40,.8),rgb(217, 56, 56));
+  }
+  li:nth-child(3n){
+    background: linear-gradient(to left,rgba(136,187,254,.8),rgb(50, 137, 254));
+  }
+  li:nth-child(4n){
+    background: linear-gradient(to left,rgb(242, 146, 56),rgba(242,116,5,.8));
+  }
+}

@@ -37,4 +37,10 @@ $(function() {
     }
   });
 
+
+$("li").click(function() {
+  alert( "Handler for .click() called." );
+  // if (this.class == thread.roomID) {
+    // $( "div" ).show();
+  }
 });
