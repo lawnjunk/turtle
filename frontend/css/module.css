@@ -39,6 +39,7 @@
 h1{
   border: 1px solid black;
   padding: 10px;
+  margin: 0;
 }
 
 /*Desktop users*/
@@ -61,17 +62,110 @@ article{
   border-radius: 5px;
 }
 
-/* Hidden Chat Room Feature */
-.items {
-  width: 61%;
-  margin-right: 2%;
-  /*float: left;*/
-  position: relative; top: 1%;
+/* Layout */
+
+
+
+button {
+  vertical-align: bottom;
+}
+
+.center-element {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#send {
+  width:13%;
+  margin: 0;
+}
+
+#emoticon {
+  width: 5%;
+  margin: 0;
+}
+
+#create_room {
+  display: block;
+  width: 100%;
+}
+
+/* Mobile First */
+
+.flexbox-container {
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+}
+
+.flexbox-container > article {
+  width: 100%;
+  padding: 0px;
+  margin: 0 auto;
+}
+
+.flexbox-container > aside {
+  width: 100%;
+  padding: 0px;
+  margin: 0 auto;
   display: none;
 }
 
 .message-box {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.copyright {
+  display: none;
+}
+
+.hamburger-hide {
+  display: inline-block;
+}
+
+/* Media Queries */
+/* Hidden Chat Room Feature */
+@media screen and (min-width: 450px) {
+  .flexbox-container {
+    flex-direction: row;
+  }
+
+  .items {
+    width: 61%;
+    margin-right: 2%;
+    position: relative; top: 1%;
+    display: none;
+  }
+
+  .message-box {
     position: absolute;
     bottom: 0;
     width: 100%;
   }
+
+  .hamburger-hide {
+    display: none;
+  }
+
+  .flexbox-container > article {
+    width: 66%;
+    padding: 10px;
+  }
+
+  .flexbox-container > aside {
+    width: 33%;
+    padding: 10px;
+    display: block;
+  }
+
+  .flexbox-container > article:first-child {
+    margin-right: 20px;
+  }
+
+  .copyright {
+    padding: .5em;
+  }
+}
