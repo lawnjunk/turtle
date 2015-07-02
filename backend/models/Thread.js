@@ -3,5 +3,6 @@
 var mongoose = require('mongoose');
 
 var threadSchema = mongoose.Schema({
-  messages: Array
+  threadName: { type: String, required: true, unique: true },
+  users: [String]
 })
