@@ -60,3 +60,12 @@ li:hover{
 article{
   border-radius: 5px;
 }
+
+/* Hidden Chat Room Feature */
+.items {
+  width: 61%;
+  margin-right: 2%;
+  /*float: left;*/
+  position: relative; top: 1%;
+  display: none;
+}
