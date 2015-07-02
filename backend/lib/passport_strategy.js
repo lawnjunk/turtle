@@ -12,15 +12,14 @@ module.exports = function passportStrategy(passport) {
         User.findOne({'basic.email': userIdentifier}, function(err, user) {
           if (err) {return done('databse error');}
           if (!user) {return done('user not found');}
-          checkPassword(user);
+          user.checkPassword(password, function(result) {
+            if (!result) return done('wrong password');
+            return done(null, user);  // return user if no auth errors
+          });
         });
-      }
-      checkPassword(user);
-
-      function checkPassword(user) {
+      } else {
         user.checkPassword(password, function(result) {
           if (!result) return done('wrong password');
-
           return done(null, user);  // return user if no auth errors
         });
       }

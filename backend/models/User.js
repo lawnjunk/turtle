@@ -23,16 +23,8 @@ UserSchema.methods.generateHash = function generateHash(password, callback) {
   });
 };
 
-UserSchema.methods.checkPassword = function checkPassword(password, callback) {
-  bcrypt.compare(password, this.basic.password, function validatePassword(err, res) {
-    if (err) throw err;
-    callback(res);  // if failure, res=false. if success, res=true
-  });
-};
-
 UserSchema.methods.generateToken = function generateToken(secret, callback) {
   this.eat = new Date().getTime();
-
   this.save(function(err, user) {
     if (err) {
       return callback(err, null);
@@ -42,7 +34,7 @@ UserSchema.methods.generateToken = function generateToken(secret, callback) {
         console.log('Error encoding eat. Error: ', err);
         return callback(err, null);
       }
-      callback(err, eatoken);
+      callback(null, eatoken);
     });
   });
 };
@@ -58,8 +50,12 @@ UserSchema.methods.invalidateToken = function invalidateToken(callback) {
   });
 };
 
+UserSchema.methods.checkPassword = function checkPassword(password, callback) {
+  bcrypt.compare(password, this.basic.password, function validatePassword(err, res) {
+    if (err) throw err;
+    callback(res);  // if failure, res=false. if success, res=true
+  });
+};
+
 // Export mongoose model/schema
 module.exports = mongoose.model('User', UserSchema);
-
-
-
