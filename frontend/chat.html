@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Take Ur Turtle Like Everywhere: a simple social media platform focused on privacy!">
+    <title>Turtle</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/module.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  </head>
+  <body>
+
+    <header role="banner" class="nav__Button">
+      <nav role="navigation" class="nav-list">
+        <ul>
+          <li class="hamburger-hide">
+            <label for="hamburger" class="pointer">
+              <i class="icon-menu"></i>
+            </label>
+            <input type="checkbox" id="hamburger">
+          </li>
+          <li>Whaddup Turtle?</li>
+          <li>Logout</li>
+        </ul>
+      </nav>
+    </header>
+
+    <main role="main" class="flexbox-container">
+      <aside id="room-box" class="sidebar-nav">
+        <h1>Rooms</h1>
+          <nav role="navigation">
+            <ul class="display-block room-list">
+              <li>Room #1</li>
+              <li>Room #2</li>
+              <li>Room #3</li>
+              <li>Room #4</li>
+              <li>Room #5</li>
+              <li>Room #6</li>
+              <li>Room #7</li>
+            </ul>
+            <button id="create_room" class="center-element">Create New Chat Room</button>
+          </nav>
+      </aside>
+      <article id="chat-box" class="chat-box">
+        <h1>Chat</h1>
+        <section class="items" id="item1">
+          <h2>Room 1</h2>
+          <ul></ul>
+        </section>
+        <section class="items" id="item2">
+          <h2>Room 2</h2>
+          <ul></ul>
+        </section>
+        <section class="items" id="item3">
+          <h2>Room 3</h2>
+          <ul></ul>
+        </section>
+        <section class="items" id="item4">
+          <h2>Room 4</h2>
+          <ul></ul>
+        </section>
+        <section class="items" id="item5">
+          <h2>Room 5</h2>
+          <ul></ul>
+        </section>
+        <section class="items" id="item6">
+          <h2>Room 6</h2>
+          <ul></ul>
+        </section>
+        <section class="items" id="item7">
+          <h2>Room 7</h2>
+          <ul></ul>
+        </section>
+        <footer class="message-box">
+          <form role="form" class="message-text">
+            <button class="emjoi">:)</button>
+            <input aria-label="Message Text" name="message-text" id="message-text" type="text" value="" placeholder="Enter your message" required>
+            <div class="hidden emjoi_list">
+              <span><a><img src="emjoi/anger6.png"></span>
+              <span><a href=""><img src="emjoi/annulled3.png"></a></span>
+              <span><a href=""><img src="emjoi/bad5.png"></a></span>
+              <span><a href=""><img src="emjoi/dony.png"></a></span>
+              <span><a href=""><img src="emjoi/leo.png"></a></span>
+              <span><a href=""><img src="emjoi/mikey.png"></a></span>
+              <span><a href=""><img src="emjoi/raph.png"></a></span>
+              <span><a href=""><img src="emjoi/pizza.png"></a></span>
+              <span><a href=""><img src="emjoi/black267.png"></a></span>
+              <span><a href=""><img src="emjoi/crying7.png"></a></span>
+              <span><a href=""><img src="emjoi/disgusted3.png"></a></span>
+              <span><a href=""><img src="emjoi/doubt3.png"></a></span>
+              <span><a href=""><img src="emjoi/emoticon82.png"></a></span>
+              <span><a href=""><img src="emjoi/emoticon90.png"></a></span>
+              <span><a href=""><img src="emjoi/emoticon93.png"></a></span>
+              <span><a href=""><img src="emjoi/emoticon94.png"></a></span>
+              <span><a href=""><img src="emjoi/emoticon100.png"></a></span>
+              <span><a href=""><img src="emjoi/emoticons9.png"></a></span>
+              <span><a href=""><img src="emjoi/happy39.png"></a></span>
+              <span><a href=""><img src="emjoi/intellectual3.png"></a></span>
+              <span><a href=""><img src="emjoi/sad34.png"></a></span>
+              <span><a href=""><img src="emjoi/smiley40.png"></a></span>
+              <span><a href=""><img src="emjoi/smiling34.png"></a></span>
+              <span><a href=""><img src="emjoi/surprised19.png"></a></span>
+              <span><a href=""><img src="emjoi/sweating3.png"></a></span>
+            </div>
+            <button id="send">Send</button>
+          </form>
+        </footer>
+
+      </article>
+    </main>
+
+    <footer role="contentinfo">
+      <p>© Copyright 2015 Turtle</p>
+    </footer>
+
+    <script type="text/javascript" src="js/interactions.js"></script>
+    <script type="text/javascript" src="js/message.js"></script>
+    <script type="text/javascript" src="js/room_popup.js"></script>
+
+  </body>
+</html>

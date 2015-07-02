@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Take Ur Turtle Like Everywhere: a simple social media platform focused on privacy!">
+    <title>Turtle</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/base.css">
+  </head>
+
+  <body>
+
+    <header role="banner">
+      <nav role="navigation">
+        <h1>Whaddup Turtle?</h1>
+      </nav>
+    </header>
+
+    <main role="main">
+      <article id="flip-container">
+        <section class="shell">
+          <section class="face front">
+            <form role="form">
+              <fieldset>
+                <legend>Login</legend>
+                <label for="name">Username:</label>
+                <input aria-label="Username" name="name" id="name" class="stored" type="text" value="" placeholder="Enter your username" required>
+                <label for="password">Password:</label>
+                <input aria-label="Password" name="password" id="password" type="password" value="" placeholder="Enter your password" required>
+                <button id="login">Login</button>
+                <button id="new_user">Create New User</button>
+              </fieldset>
+            </form>
+          </section>
+
+          <section class="face back">
+            <form role="form">
+              <fieldset>
+                <legend>Create New User</legend>
+                <label for="new_username">Username:</label>
+                <input aria-label="Username" name="new_username" id="new_username" class="stored" type="text" value="" placeholder="Enter a username" required>
+                <label for="new_password">Password:</label>
+                <input aria-label="Password" name="new_password" id="new_password" type="password" value="" placeholder="Enter a password" required>
+                <label for="email">Email:</label>
+                <input aria-label="Email" name="new_email" id="new_email" class="stored" type="email" value="" placeholder="example@example.com" required>
+                <button id="create_new">Sign Up</button>
+              </fieldset>
+            </form>
+          </section>
+        </section>
+      </article>
+    </main>
+
+    <!-- <footer role="contentinfo">
+      <p>© Copyright 2015 Turtle</p>
+    </footer> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="js/localStorage.js"></script>
+
+  </body>
+</html>
