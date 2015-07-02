@@ -16,15 +16,19 @@ $(document).ready(function () {
   $('#create_new').click(create_new);
 
   function login() {
-    name = $('#name').val();
-    password = $('#password').val();
+    var basicAuth = $('#name').val() + ':' + $('#password').val();
     $.ajax({
-      type: 'POST',
-      data: JSON.stringify(message),
+      type: 'GET',
+      url: '/api/sign_in',
       contentType: 'application/json',
-      url: '/api/new_message',
-      success: function(newthread) {
-        console.log(newthread);
+      beforeSend: function (xhr) {
+        xhr.setRequestHeader(
+          'Authorization',
+          'Basic ' + btoa(basicAuth)
+        );
+      },
+      success: function(data) {
+        console.log(data);
       }
     });
   }
