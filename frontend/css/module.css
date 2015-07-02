@@ -69,3 +69,9 @@ article{
   position: relative; top: 1%;
   display: none;
 }
+
+.message-box {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }

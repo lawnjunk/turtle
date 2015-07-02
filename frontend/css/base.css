@@ -67,6 +67,7 @@ form:not(.message-text) {
 
 article {
   background-color: #FFF68F;
+  position: relative;
 }
 
 fieldset {
