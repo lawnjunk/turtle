@@ -14,6 +14,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-webpack');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-jsxhint');
+  grunt.loadNpmTasks('grunt-jest');
 
 
   // configure tasks
@@ -103,6 +104,13 @@ module.exports = function(grunt) {
         ignoreLeaks: true,
         ul: 'bdd',
         reporter: 'tap'
+      }
+    },
+
+    jest: {
+      options: {
+        coverage: true,
+        testPathPattern: /.*-test.js/
       }
     },
 

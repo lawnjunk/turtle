@@ -6,6 +6,7 @@ var Cookies = require('cookies-js');
 var request = require('superagent');
 
 var UserStore = Fluxxor.createStore({
+
   initialize: function() {
     this.eat = Cookies.get('eat') || '';
 
@@ -45,6 +46,10 @@ var UserStore = Fluxxor.createStore({
         this.state.loggedin = true;
         console.log(this.state.loggedin)
       }.bind(this));
+  },
+
+  loggedIn: function() {
+    return !!localStorage.eat;
   },
 
   onLogout: function() {

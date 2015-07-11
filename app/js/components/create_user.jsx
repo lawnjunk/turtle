@@ -42,13 +42,20 @@ var CreateUser = React.createClass({
     if (this.state.newUser.password.length < 1 && this.state.changed)
       passwordError = <span>password cannot be blank</span>;
     if (usernameError || passwordError || !this.state.changed)
-      submitButton = <button type="submit" disabled>Save New User</button>;
+      submitButton = <button type="submit" disabled>Create a new user</button>;
     else
-      submitButton = <button type="submit" >Save New User</button>;
+      submitButton = <button type="submit" >Create a new user</button>;
 
     return (
       <section  className="sign-in">
         <form name="signupform" onSubmit={this.handleSubmit}>
+          <label htmlFor="email">Email:</label>{emailError}
+          <input type="text" name="user-email" id="email" value={this.state.newUser.email} onChange={this.handleChange} />
+          <label htmlFor="username">User Name:</label>{usernameError}
+          <input type="text" name="user-username" id="username" value={this.state.newUser.username} onChange={this.handleChange} />
+          <label htmlFor="password">Password:</label>{passwordError}
+          <input type="password" name="user-password" id="password" value={this.state.newUser.password} onChange={this.handleChange} />
+          <Link to="/dashboard">{submitButton}</Link>
           <ul className="sign-in-form">
             <li><label htmlFor="email">Email:</label></li>
             <li><input type="text" name="user-email" id="email" placeholder="Email Required" value={this.state.newUser.email} onChange={this.handleChange} /></li>
